@@ -30,11 +30,13 @@
       <tr *ngFor="let studio of filteredStudios()">
         <td>{{ studio.name }}</td>
         <td>{{ studio.type }}</td>
-        <td>{{ studio.location }}</td>
+        <td>{{ studio.location.address }}</td>
         <td>{{ studio.amenities }}</td>
         <td>{{ studio.pricePerHour | currency }}</td>
         <td>{{ studio.rating }}</td>
-        <td (click)="bookStudio(studio)"><button class="bg-green-200 p-2">book now</button></td>
+        <td (click)="bookStudio(studio)">
+          <button class="bg-green-200 p-2">book now</button>
+        </td>
       </tr>
     </tbody>
   </table>
