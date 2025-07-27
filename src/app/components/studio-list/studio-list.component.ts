@@ -19,12 +19,14 @@ import { DataService } from '../../shared/services/data.service';
   templateUrl: './studio-list.component.html',
   styleUrls: ['./studio-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FormsModule, CurrencyPipe], // Add FormsModule and CurrencyPipe
+  imports: [CommonModule, FormsModule, CurrencyPipe, ModalComponent], // Add FormsModule and CurrencyPipe
 })
 export class StudioListComponent {
   private dataService = inject(DataService); // Inject DataService
 
   studios = signal<Studio[]>([]); // Use Studio interface
+  bookingModalOpen = signal<boolean>(false);
+  selectedStudio = signal<Studio | null>(null);
 
   searchTerm = signal('');
   private searchTerms = new Subject<string>();
@@ -98,32 +100,28 @@ export class StudioListComponent {
     this.searchTerms.next(inputElement.value);
   }
 
-  bookStudio(studio: Studio): void {
-    // For now, we'll just log the studio and call the createBooking method
-    console.log('Booking studio:', studio);
+  bookStudio(): void {
+    const studio = this.selectedStudio();
+    if (studio) {
+      const dummyBooking: Booking = {
+        id: 0, // ID will be assigned by the backend
+        studioId: studio?.id,
+        date: new Date().toISOString().toString(), // Dummy date (today)
+        startTime: '10:00', // Dummy start time
+        endTime: '11:00', // Dummy end time
+        // Add other relevant properties if needed
+      };
 
-    // TODO: Implement actual booking logic (e.g., show a modal for date/time selection)
-    // and create a proper Booking object before calling the service.
-    const dummyBooking: Booking = {
-      id: 0, // ID will be assigned by the backend
-      studioId: studio.id,
-      date: new Date().toISOString().toString(), // Dummy date (today)
-      startTime: '10:00', // Dummy start time
-      endTime: '11:00', // Dummy end time
-      // Add other relevant properties if needed
-    };
-
-    this.dataService.createBooking(dummyBooking).subscribe(
-      response => {
-        console.log('Booking successful:', response);
-        // TODO: Provide user feedback (e.g., a success message)
-        // TODO: Refresh the booking list or navigate to the booking details page
-      },
-      error => {
-        console.error('Booking failed:', error);
-        // TODO: Provide user feedback (e.g., an error message)
-      }
-    );
+      this.dataService.createBooking(dummyBooking).subscribe(
+        response => {
+          console.log('Booking successful:', response);
+          this.bookingModalOpen.set(false);
+        },
+        error => {
+          console.error('Booking failed:', error);
+        }
+      );
+    }
   }
 
   openBookingModal(): void {

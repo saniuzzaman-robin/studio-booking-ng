@@ -34,11 +34,28 @@
         <td>{{ studio.amenities }}</td>
         <td>{{ studio.pricePerHour | currency }}</td>
         <td>{{ studio.rating }}</td>
-        <td (click)="bookStudio(studio)">
-          <button class="bg-green-200 p-2">book now</button>
+        <td>
+          <button
+            class="bg-green-200 p-2"
+            (click)="bookingModalOpen.set(true); selectedStudio.set(studio)">
+            book now
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 <p *ngIf="!filteredStudios().length">No studios available.</p>
+<app-modal
+  [show]="bookingModalOpen()"
+  title="Confirm Booking?"
+  (close)="bookingModalOpen.set(false)">
+  <div class="flex flex-col">
+    <span>Are you sure you want to confirm booking this studio?</span>
+    <button
+      class="bg-green-200 px-2 py-1 rounded-lg ml-auto"
+      (click)="bookStudio()">
+      Confirm
+    </button>
+  </div>
+</app-modal>
