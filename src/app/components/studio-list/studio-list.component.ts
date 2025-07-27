@@ -3,7 +3,6 @@ import {
   Component,
   signal,
   computed,
-  effect,
   inject,
 } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -20,7 +19,7 @@ import { DataService } from '../../shared/services/data.service';
   templateUrl: './studio-list.component.html',
   styleUrls: ['./studio-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FormsModule, CurrencyPipe, ModalComponent], // Add FormsModule and CurrencyPipe
+  imports: [CommonModule, FormsModule, CurrencyPipe], // Add FormsModule and CurrencyPipe
 })
 export class StudioListComponent {
   private dataService = inject(DataService); // Inject DataService
