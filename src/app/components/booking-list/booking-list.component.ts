@@ -5,8 +5,8 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Booking } from '../../../shared/models/shared.models';
-import { DataService } from '../../../shared/services/data.service';
+import { Booking } from '../../shared/models/shared.models';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-booking-list',

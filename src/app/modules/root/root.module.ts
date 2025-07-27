@@ -21,14 +21,14 @@ const routes: Route[] = [
       {
         path: 'studios',
         loadComponent: () =>
-          import('../components/studio-list/studio-list.component').then(
+          import('../../components/studio-list/studio-list.component').then(
             m => m.StudioListComponent
           ),
       },
       {
         path: 'bookings',
         loadComponent: () =>
-          import('../components/booking-list/booking-list.component').then(
+          import('../../components/booking-list/booking-list.component').then(
             m => m.BookingListComponent
           ),
       },

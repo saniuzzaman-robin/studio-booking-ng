@@ -10,9 +10,9 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule for debounce
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Booking, Studio } from '../../../shared/models/shared.models';
-import { DataService } from '../../../shared/services/data.service';
-import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { Studio, Booking } from '../../shared/models/shared.models';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-studio-list',
