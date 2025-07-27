@@ -1,0 +1,21 @@
+<h2>Booking List</h2>
+
+<div *ngIf="bookings().length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Studio Id</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings()">
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.studioId }}</td>
+        <td>{{ booking.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p *ngIf="!bookings().length">No bookings available.</p>

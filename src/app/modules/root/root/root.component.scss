@@ -1,0 +1,10 @@
+:host ::ng-deep app-home-page,
+::ng-deep app-user-profile,
+::ng-deep app-explore-users,
+::ng-deep app-coming-soon{
+  flex: 1;
+}
+.network-progress-bar {
+  position: absolute !important;
+  top: 88px !important;
+}

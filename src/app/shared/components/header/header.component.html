@@ -1,0 +1,20 @@
+<div
+  class="py-6 px-4 md:px-8 xl:px-[8%] bg-white flex flex-row justify-between gap-2">
+  <div class="flex gap-2">
+    <a routerLink="/bookings" routerLinkActive="active"
+      >Bookings</a
+    >
+    <a routerLink="/studios" routerLinkActive="active">Studios</a>
+  </div>
+  <div class="flex flex-row gap-6 md:gap-8">
+    <img
+      alt="notification-icon"
+      src="../../../../assets/icons/notification_icon.svg" />
+    <img alt="notification-icon" src="../../../../assets/icons/avatar_1.svg" />
+    <img
+      class="cursor-pointer"
+      (click)="logout()"
+      alt="notification-icon"
+      src="../../../../assets/icons/logout_icon.svg" />
+  </div>
+</div>

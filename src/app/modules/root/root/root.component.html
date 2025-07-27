@@ -1,0 +1,11 @@
+<div class="relative flex flex-col bg-gray-50 max-h-screen h-full">
+  <app-header class="sticky top-0 z-10"></app-header>
+  <div class="flex flex-row justify-between overflow-hidden">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<mat-progress-bar
+  *ngIf="isNetworkCallOngoing"
+  mode="indeterminate"
+  class="network-progress-bar"></mat-progress-bar>
+<app-bottom-menu></app-bottom-menu>

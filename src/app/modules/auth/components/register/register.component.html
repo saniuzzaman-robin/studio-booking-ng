@@ -1,0 +1,54 @@
+<div class="login flex flex-row w-full h-full">
+  <div class="h-full w-1/2 hidden md:flex md:visible">
+    <img
+      alt="studio booking register page image"
+      src="https://adobexdelements.com/wp-content/uploads/2019/11/portfolio-landing-page-illustration.png" />
+  </div>
+  <div
+    class="h-full w-full md:w-1/2 flex flex-col justify-center form-container">
+    <h1 class="text-5xl font-extrabold mb-9">Register to StudioBK</h1>
+    <form
+      class="flex flex-col"
+      [formGroup]="registerForm"
+      (submit)="register()">
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="username" placeholder="Username" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          formControlName="password"
+          #password
+          [type]="password.value.length > 0 ? 'password' : 'text'"
+          placeholder="Password" />
+      </mat-form-field>
+      <button
+        [disabled]="registerForm.invalid"
+        class="h-10"
+        mat-flat-button
+        color="primary"
+        type="submit">
+        <span *ngIf="!awaitingRegister">Register</span>
+        <mat-spinner
+          color="accent"
+          [diameter]="24"
+          *ngIf="awaitingRegister"></mat-spinner>
+      </button>
+      <span class="mt-4 text-end"
+        >Already have an account?
+        <a
+          class="cursor-pointer text-blue-900 font-bold"
+          (click)="navigateToLogin()"
+          >Login</a
+        ></span
+      >
+    </form>
+  </div>
+</div>

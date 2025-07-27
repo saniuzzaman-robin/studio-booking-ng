@@ -1,0 +1,42 @@
+<h2>Studio List</h2>
+
+<div class="controls">
+  <input
+    type="text"
+    placeholder="Search studios..."
+    (input)="onSearchInputChange($event)"
+    list="studio-suggestions" />
+  <datalist id="studio-suggestions">
+    <div *ngFor="let suggestion of searchSuggestions()">
+      <option [value]="suggestion"></option>
+    </div>
+  </datalist>
+</div>
+
+<div *ngIf="filteredStudios().length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Amenities</th>
+        <th>Price per Hour</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let studio of filteredStudios()">
+        <td>{{ studio.name }}</td>
+        <td>{{ studio.type }}</td>
+        <td>{{ studio.location }}</td>
+        <td>{{ studio.amenities }}</td>
+        <td>{{ studio.pricePerHour | currency }}</td>
+        <td>{{ studio.rating }}</td>
+        <td (click)="bookStudio(studio)"><button class="bg-green-200 p-2">book now</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p *ngIf="!filteredStudios().length">No studios available.</p>

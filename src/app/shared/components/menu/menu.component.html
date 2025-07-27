@@ -1,0 +1,42 @@
+<div class="flex flex-col p-6 bg-white rounded-lg sticky">
+  <span class="pl-3 mb-4 text-gray-500">Menu</span>
+  <div class="menu-list flex flex-col gap-4">
+    <a routerLink="/home" (click)="activeLink = '/home'" class="cursor-pointer">
+      <div class="flex flex-row gap-2 pl-3">
+        <img alt="home icon" src="../../../../../assets/icons/home_icon.svg" />
+        <span>Timeline</span>
+      </div>
+    </a>
+    <mat-divider></mat-divider>
+    <a
+      routerLink="/profile"
+      (click)="activeLink = '/profile'"
+      class="cursor-pointer">
+      <div class="flex flex-row gap-2 pl-3">
+        <img alt="home icon" src="../../../../../assets/icons/user_icon.svg" />
+        <span>My Profile</span>
+      </div>
+    </a>
+    <mat-divider></mat-divider>
+    <a
+      routerLink="/explore-users"
+      (click)="activeLink = '/explore-users'"
+      class="cursor-pointer">
+      <div class="flex flex-row gap-2 pl-3">
+        <img alt="home icon" src="../../../../../assets/icons/users_icon.svg" />
+        <span>Explore Users</span>
+      </div>
+    </a>
+    <mat-divider></mat-divider>
+    <a
+      routerLink="/coming-soon"
+      (click)="activeLink = '/coming-soon'"
+      class="cursor-pointer">
+      <div class="flex flex-row gap-2 pl-3">
+        <img alt="home icon" src="../../../../../assets/icons/more_icon.svg" />
+        <span>More</span>
+      </div>
+    </a>
+    <mat-divider></mat-divider>
+  </div>
+</div>
